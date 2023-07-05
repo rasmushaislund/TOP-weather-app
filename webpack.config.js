@@ -28,7 +28,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
     assetModuleFilename: 'img/[name].[hash][ext]',
-    publicPath: '/',
+    publicPath: './',
   },
   optimization: {
     runtimeChunk: 'single',
