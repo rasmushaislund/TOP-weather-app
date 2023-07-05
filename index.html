@@ -3,10 +3,170 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/img/favicon.9d08e7506aa08f4fb260.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
     <title>Your weather</title>
   <script defer src="/runtime.bundle.js"></script><script defer src="/index.bundle.js"></script></head>
   <body>
-    <h1>hello</h1>
-    <img src="/img/me.d791308de602c2511b5c.JPG" alt="me" />
+    <p class="para-author">
+      Created by
+      <a
+        class="github-link"
+        href="https://github.com/rasmushaislund"
+        target="_blank"
+        >Rasmus H.
+        <img
+          src="/img/github-logo-white.4c2be9f4828f8c89fdca.svg"
+          class="github-logo"
+          alt="github logo"
+      /></a>
+    </p>
+
+    <div class="container">
+      <div class="search">
+        <svg
+          class="icon-locator icon-small"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <title>Enter your location</title>
+          <path
+            d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
+          />
+        </svg>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          placeholder="Enter location"
+        />
+        <button class="search-btn">
+          <svg
+            class="icon-search icon-small"
+            focusable="false"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <title>Search</title>
+            <path
+              d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="error">
+        <img
+          class="error-icon"
+          src="/img/404_error.87049462a1ae4986277e.jpg"
+          alt="error - weather not found"
+        />
+        <p class="error-para main-text">
+          Oops! We could not find any weather :/
+        </p>
+      </div>
+      <div class="content">
+        <div class="time">
+          <p class="dow main-text-bold">Monday</p>
+        </div>
+        <div class="image">
+          <img
+            class="weather-icon"
+            src="/img/favicon.9d08e7506aa08f4fb260.png"
+            alt="weather icon of the day"
+          />
+        </div>
+        <div class="temperature-content">
+          <p class="temperature-c show-temp important-text">23</p>
+          <p class="temperature-f important-text">23</p>
+          <sup><p class="temperature-unit">&degC</p></sup>
+        </div>
+        <p class="description main-text">Sunny</p>
+        <div class="toggle-temp">
+          <input
+            class="slider"
+            id="temp-toggle"
+            type="range"
+            min="0"
+            max="1"
+            value="0"
+            step="1"
+          />
+          <p class="accessory-text">Show in &degF</p>
+        </div>
+        <div class="accessories">
+          <div class="accessory humidity">
+            <svg
+              class="icon-humidity icon-small"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <title>Humidity</title>
+              <path
+                d="M20 14H22V16H20C18.62 16 17.26 15.65 16 15C13.5 16.3 10.5 16.3 8 15C6.74 15.65 5.37 16 4 16H2V14H4C5.39 14 6.78 13.53 8 12.67C10.44 14.38 13.56 14.38 16 12.67C17.22 13.53 18.61 14 20 14M20 20H22V22H20C18.62 22 17.26 21.65 16 21C13.5 22.3 10.5 22.3 8 21C6.74 21.65 5.37 22 4 22H2V20H4C5.39 20 6.78 19.53 8 18.67C10.44 20.38 13.56 20.38 16 18.67C17.22 19.53 18.61 20 20 20M7 2L3 6H6V11H8V6H11M17 2L13 6H16V11H18V6H21"
+              />
+            </svg>
+            <div class="humidity-data data">
+              <div class="value-unit">
+                <p class="humidity-value main-text">59</p>
+                <p class="humidity-unit main-text">%</p>
+              </div>
+              <p class="accessory-text">Humidity</p>
+            </div>
+          </div>
+          <div class="accessory direction">
+            <svg
+              class="icon-direction icon-small"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <title>Wind direction</title>
+              <path
+                d="M7 5V13L22 11V7L7 5M10 6.91L13 7.31V10.69L10 11.09V6.91M16 7.71L19 8.11V9.89L16 10.29V7.71M5 10V11H6V12H5V21H3V4C3 3.45 3.45 3 4 3S5 3.45 5 4V6H6V7H5V10Z"
+              />
+            </svg>
+            <div class="direction-data data">
+              <p class="direction-value main-text">SSW</p>
+              <p class="accessory-text">Wind direction</p>
+            </div>
+          </div>
+          <div class="accessory speed">
+            <svg
+              class="icon-speed icon-small"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <title>Wind speed</title>
+              <path
+                d="M4,10A1,1 0 0,1 3,9A1,1 0 0,1 4,8H12A2,2 0 0,0 14,6A2,2 0 0,0 12,4C11.45,4 10.95,4.22 10.59,4.59C10.2,5 9.56,5 9.17,4.59C8.78,4.2 8.78,3.56 9.17,3.17C9.9,2.45 10.9,2 12,2A4,4 0 0,1 16,6A4,4 0 0,1 12,10H4M19,12A1,1 0 0,0 20,11A1,1 0 0,0 19,10C18.72,10 18.47,10.11 18.29,10.29C17.9,10.68 17.27,10.68 16.88,10.29C16.5,9.9 16.5,9.27 16.88,8.88C17.42,8.34 18.17,8 19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14H5A1,1 0 0,1 4,13A1,1 0 0,1 5,12H19M18,18H4A1,1 0 0,1 3,17A1,1 0 0,1 4,16H18A3,3 0 0,1 21,19A3,3 0 0,1 18,22C17.17,22 16.42,21.66 15.88,21.12C15.5,20.73 15.5,20.1 15.88,19.71C16.27,19.32 16.9,19.32 17.29,19.71C17.47,19.89 17.72,20 18,20A1,1 0 0,0 19,19A1,1 0 0,0 18,18Z"
+              />
+            </svg>
+            <div class="speed-data data">
+              <div class="value-unit">
+                <p class="speed-value main-text">15.2</p>
+                <p class="speed-unit main-text">kph</p>
+              </div>
+              <p class="accessory-text">Wind speed</p>
+            </div>
+          </div>
+        </div>
+        <a
+          class="weather-api"
+          href="https://www.weatherapi.com/"
+          target="_blank"
+          title="Free Weather API"
+          ><img
+            src="//cdn.weatherapi.com/v4/images/weatherapi_logo.png"
+            alt="Weather data by WeatherAPI.com"
+        /></a>
+      </div>
+    </div>
   </body>
 </html>
