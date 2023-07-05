@@ -1,5 +1,4 @@
 import './style.css';
-import './index.html';
 import { showWeather, toggleTemperature } from './populate';
 
 // Add event listeners for location search
