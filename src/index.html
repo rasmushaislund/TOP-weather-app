@@ -29,7 +29,7 @@
       /></a>
     </p>
 
-    <div class="container compact">
+    <div class="container">
       <div class="search">
         <svg
           class="icon-locator icon-small"
@@ -83,13 +83,22 @@
             alt="weather icon of the day"
           />
         </div>
-        <p class="temperature important-text">23<sup> &degC</sup></p>
+        <div class="temperature-content">
+          <p class="temperature-c show-temp important-text">23</p>
+          <p class="temperature-f important-text">23</p>
+          <sup><p class="temperature-unit">&degC</p></sup>
+        </div>
         <p class="description main-text">Sunny</p>
         <div class="toggle-temp">
-          <label class="switch">
-            <input type="checkbox" id="temp-toggle" name="temp_toggle" />
-            <span class="slider round"></span>
-          </label>
+          <input
+            class="slider"
+            id="temp-toggle"
+            type="range"
+            min="0"
+            max="1"
+            value="0"
+            step="1"
+          />
           <p class="accessory-text">Show in &degF</p>
         </div>
         <div class="accessories">
@@ -148,6 +157,15 @@
             </div>
           </div>
         </div>
+        <a
+          class="weather-api"
+          href="https://www.weatherapi.com/"
+          target="_blank"
+          title="Free Weather API"
+          ><img
+            src="//cdn.weatherapi.com/v4/images/weatherapi_logo.png"
+            alt="Weather data by WeatherAPI.com"
+        /></a>
       </div>
     </div>
   </body>
