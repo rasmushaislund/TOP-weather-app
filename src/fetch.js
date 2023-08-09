@@ -8,34 +8,37 @@ export async function fetchWeather(place) {
 
   try {
     const response = await fetch(urlCurrent, { mode: 'cors' });
-    var toJSON = await response.json();
-  } catch {
+    if (!response.ok) throw new Error();
+    const toJSON = await response.json();
+    console.log(toJSON);
+    return toJSON;
+  } catch (error) {
     showError();
   }
 
   // Store values from fetch in variables
-  const lastUpdated = toJSON.current.last_updated;
-  const icon = toJSON.current.condition.icon;
-  const tempC = toJSON.current.temp_c;
-  const tempF = toJSON.current.temp_f;
-  const description = toJSON.current.condition.text;
-  const humidity = toJSON.current.humidity;
-  const windDir = toJSON.current.wind_dir;
-  const windSpeed = toJSON.current.wind_kph;
-  const isDay = toJSON.current.is_day;
-
-  // Return relevant data to be used elsewhere in the codebase
-  return {
-    lastUpdated,
-    icon,
-    tempC,
-    tempF,
-    description,
-    humidity,
-    windDir,
-    windSpeed,
-    isDay,
-  };
+  // const lastUpdated = toJSON.current.last_updated;
+  // const icon = toJSON.current.condition.icon;
+  // const tempC = toJSON.current.temp_c;
+  // const tempF = toJSON.current.temp_f;
+  // const description = toJSON.current.condition.text;
+  // const humidity = toJSON.current.humidity;
+  // const windDir = toJSON.current.wind_dir;
+  // const windSpeed = toJSON.current.wind_kph;
+  // const isDay = toJSON.current.is_day;
+  // // Return relevant data to be used elsewhere in the codebase
+  // return {
+  //   toJSON,
+  //   //   lastUpdated,
+  //   //   icon,
+  //   //   tempC,
+  //   //   tempF,
+  //   //   description,
+  //   //   humidity,
+  //   //   windDir,
+  //   //   windSpeed,
+  //   //   isDay,
+  // };
 }
 
 // END //
