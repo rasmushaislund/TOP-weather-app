@@ -1,13 +1,15 @@
 // START //
 
-import { fetchWeather } from './fetch';
 import { formatDate } from './DoW';
 
 const container = document.querySelector('.container');
 const content = document.querySelector('.content');
 const error = document.querySelector('.error');
 
-export async function showWeather(location) {
+export function showWeather(getWeather) {
+  if (!getWeather) return;
+
+  // Get DOM items for later data population
   const day = document.querySelector('.dow');
   const weatherIcon = document.querySelector('.weather-icon');
   const temperatureC = document.querySelector('.temperature-c');
@@ -17,11 +19,28 @@ export async function showWeather(location) {
   const windDirection = document.querySelector('.direction-value');
   const windSpeedS = document.querySelector('.speed-value');
 
-  // Make API call and store in variable
-  const fetchAPI = await fetchWeather(location);
+  // Store relevant weather data items in variables
+  const lastUpdated = getWeather.current.last_updated;
+  const icon = getWeather.current.condition.icon;
+  const tempC = getWeather.current.temp_c;
+  const tempF = getWeather.current.temp_f;
+  const description = getWeather.current.condition.text;
+  const humidity = getWeather.current.humidity;
+  const windDir = getWeather.current.wind_dir;
+  const windSpeed = getWeather.current.wind_kph;
 
-  // Call date formatter from DoW.js module to get date as day-of-week
-  const dow = formatDate(fetchAPI.lastUpdated);
+  // Get day-of-week by using date from weather data
+  const dow = formatDate(lastUpdated);
+
+  // Populate app with API data values
+  day.textContent = dow;
+  weatherIcon.src = icon;
+  temperatureC.textContent = tempC;
+  temperatureF.textContent = Math.round(tempF);
+  descriptions.textContent = description;
+  humidityValue.textContent = humidity;
+  windDirection.textContent = windDir;
+  windSpeedS.textContent = windSpeed;
 
   // Style the displaying of weather data
   content.style.display = 'flex';
@@ -29,16 +48,6 @@ export async function showWeather(location) {
   container.style.height = '575px';
   error.style.display = 'none';
   error.classList.remove('fade-in');
-
-  // Populate app with API fetch-values
-  day.textContent = dow;
-  weatherIcon.src = fetchAPI.icon;
-  temperatureC.textContent = fetchAPI.tempC;
-  temperatureF.textContent = Math.round(fetchAPI.tempF);
-  descriptions.textContent = fetchAPI.description;
-  humidityValue.textContent = fetchAPI.humidity;
-  windDirection.textContent = fetchAPI.windDir;
-  windSpeedS.textContent = fetchAPI.windSpeed;
 }
 
 export function toggleTemperature(value) {
