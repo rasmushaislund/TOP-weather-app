@@ -23,13 +23,13 @@ module.exports = {
       template: './src/index.html',
       inject: 'head',
     }),
-    new MiniCssExtractPlugin({ filename: 'style.[hash].css' }),
+    new MiniCssExtractPlugin({ filename: 'style.css' }),
   ],
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    assetModuleFilename: 'img/[name].[hash][ext]',
+    assetModuleFilename: 'img/[name][ext]',
     publicPath: './',
   },
   optimization: {
