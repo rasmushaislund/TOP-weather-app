@@ -1,12 +1,13 @@
 import './style.css';
-import { showWeather, toggleTemperature } from './populate';
+import { toggleTemperature } from './populate';
+import { fetchWeather } from './fetch';
 
 // Add event listeners for location search
 const location = document.querySelector('#location');
 const search = document.querySelector('.search-btn');
 
 search.addEventListener('click', () => {
-  showWeather(location.value);
+  fetchWeather(location.value);
 });
 
 location.addEventListener('keypress', (e) => {
